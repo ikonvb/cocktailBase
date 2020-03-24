@@ -80,6 +80,10 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="cocktailId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
     <fragment

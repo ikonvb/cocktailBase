@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 import com.bulyginkonstantin.cocktailbase.R
+import kotlinx.android.synthetic.main.fragment_result_list.*
 
 /**
  * A simple [Fragment] subclass.
