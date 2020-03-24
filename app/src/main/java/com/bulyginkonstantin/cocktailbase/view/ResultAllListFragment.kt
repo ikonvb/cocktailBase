@@ -11,7 +11,7 @@ import com.bulyginkonstantin.cocktailbase.R
 /**
  * A simple [Fragment] subclass.
  */
-class ResulAlltListFragment : Fragment() {
+class ResultAllListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

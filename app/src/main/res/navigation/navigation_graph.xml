@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/resulAlltListFragment"
-        android:name="com.bulyginkonstantin.cocktailbase.view.ResulAlltListFragment"
+        android:name="com.bulyginkonstantin.cocktailbase.view.ResultAllListFragment"
         android:label="fragment_result_list"
         tools:layout="@layout/fragment_result_list">
         <action
