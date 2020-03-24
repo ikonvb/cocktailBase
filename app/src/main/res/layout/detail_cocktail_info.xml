@@ -40,15 +40,6 @@
                 app:layout_constraintStart_toEndOf="@+id/imageViewSmallPoster"
                 app:layout_constraintTop_toTopOf="@+id/imageViewSmallPoster" />
 
-            <TextView
-                android:id="@+id/textViewIngredients"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                app:layout_constraintStart_toEndOf="@+id/textViewCocktailName"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
