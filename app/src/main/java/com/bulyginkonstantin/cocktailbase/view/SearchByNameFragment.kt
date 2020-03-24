@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 import com.bulyginkonstantin.cocktailbase.R
+import kotlinx.android.synthetic.main.fragment_search_by_name.*
 
 /**
  * A simple [Fragment] subclass.
@@ -21,4 +23,11 @@ class SearchByNameFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search_by_name, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        buttonSearchByName.setOnClickListener {
+            val action = SearchByNameFragmentDirections.actionToResulAlltListFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+    }
 }

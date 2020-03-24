@@ -26,10 +26,18 @@
         tools:layout="@layout/fragment_choose_search">
         <action
             android:id="@+id/actionToSearchByNameFragment"
-            app:destination="@id/searchByNameFragment" />
+            app:destination="@id/searchByNameFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/actionToResulAlltListFragment"
-            app:destination="@id/resulAlltListFragment" />
+            app:destination="@id/resulAlltListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -39,7 +47,11 @@
         tools:layout="@layout/fragment_search_by_name">
         <action
             android:id="@+id/actionToResulAlltListFragment"
-            app:destination="@id/resulAlltListFragment" />
+            app:destination="@id/resulAlltListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -49,7 +61,11 @@
         tools:layout="@layout/fragment_result_list">
         <action
             android:id="@+id/actionToDetailInfoFragment"
-            app:destination="@id/detailInfoFragment" />
+            app:destination="@id/detailInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -59,7 +75,11 @@
         tools:layout="@layout/fragment_detail_info">
         <action
             android:id="@+id/actionToFavouriteListFragment"
-            app:destination="@id/favouriteListFragment" />
+            app:destination="@id/favouriteListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -69,7 +89,11 @@
         tools:layout="@layout/fragment_favourite_list">
         <action
             android:id="@+id/action_favouriteListFragment_to_chooseSearchFragment"
-            app:destination="@id/chooseSearchFragment" />
+            app:destination="@id/chooseSearchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 

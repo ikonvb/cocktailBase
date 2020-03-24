@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageViewSearch" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonFindByName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
@@ -51,12 +51,12 @@
                 android:text="@string/find_by_name"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_24"
-                app:layout_constraintBottom_toTopOf="@+id/button3"
-                app:layout_constraintEnd_toEndOf="@+id/button3"
-                app:layout_constraintStart_toStartOf="@+id/button3" />
+                app:layout_constraintBottom_toTopOf="@+id/buttonShowAll"
+                app:layout_constraintEnd_toEndOf="@+id/buttonShowAll"
+                app:layout_constraintStart_toStartOf="@+id/buttonShowAll" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonShowAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="60dp"

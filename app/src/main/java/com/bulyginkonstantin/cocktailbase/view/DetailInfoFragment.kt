@@ -20,5 +20,4 @@ class DetailInfoFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail_info, container, false)
     }
-
 }
