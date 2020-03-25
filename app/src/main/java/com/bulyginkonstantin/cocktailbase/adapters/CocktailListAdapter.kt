@@ -30,7 +30,7 @@ class CocktailListAdapter(private val cocktailList: ArrayList<Cocktail>) :
     override fun getItemCount() = cocktailList.size
 
     override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) {
-        holder.view.textViewCocktailName.text = cocktailList[position].strDrink
+        holder.view.textViewCocktailName.text = cocktailList[position].drinkName
         holder.view.setOnClickListener {
             Navigation.findNavController(it).navigate(ResultAllListFragmentDirections.actionToDetailInfoFragment())
         }

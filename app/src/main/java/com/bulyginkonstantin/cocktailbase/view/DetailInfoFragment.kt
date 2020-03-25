@@ -42,11 +42,11 @@ class DetailInfoFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.cocktailLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
-                cocktailNameTextView.text = it.strDrink
-                glassTextView.text = it.strGlass
-                alcoholicTextView.text = it.strAlcoholic
-                styleTextView.text = it.strCategory
-                instructionsTextView.text = it.strInstructions
+                cocktailNameTextView.text = it.drinkName
+                glassTextView.text = it.glass
+                alcoholicTextView.text = it.isAlcoholic
+                styleTextView.text = it.category
+                instructionsTextView.text = it.instructions
             }
         })
     }

@@ -1,13 +1,32 @@
 package com.bulyginkonstantin.cocktailbase.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Cocktail(
+    @SerializedName("idDrink")
     val idDrink: String,
-    val strDrink: String,
-    val strCategory: String,
-    val strAlcoholic:String,
-    val strGlass: String,
-    val strInstructions: String,
-    val strDrinkThumb: String,
-    //val strIngredient: MutableList<String>,
-    val dateModified: String
+
+    @SerializedName("strDrink")
+    val drinkName: String,
+
+    @SerializedName("strCategory")
+    val category: String,
+
+    @SerializedName("strAlcoholic")
+    val isAlcoholic:String,
+
+    @SerializedName("strGlass")
+    val glass: String,
+
+    @SerializedName("strInstructions")
+    val instructions: String,
+
+    @SerializedName("strDrinkThumb")
+    val imgUrl: String,
+
+//    @SerializedName("strIngredient")
+//    val ingredients: MutableList<String>,
+
+    @SerializedName("dateModified")
+    val lastDateModified: String
 )
