@@ -3,9 +3,11 @@ package com.bulyginkonstantin.cocktailbase.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bulyginkonstantin.cocktailbase.R
 import com.bulyginkonstantin.cocktailbase.model.Cocktail
+import com.bulyginkonstantin.cocktailbase.view.ResultAllListFragmentDirections
 import kotlinx.android.synthetic.main.detail_cocktail_info.view.*
 
 class CocktailListAdapter(private val cocktailList: ArrayList<Cocktail>) :
@@ -29,5 +31,8 @@ class CocktailListAdapter(private val cocktailList: ArrayList<Cocktail>) :
 
     override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) {
         holder.view.textViewCocktailName.text = cocktailList[position].strDrink
+        holder.view.setOnClickListener {
+            Navigation.findNavController(it).navigate(ResultAllListFragmentDirections.actionToDetailInfoFragment())
+        }
     }
 }

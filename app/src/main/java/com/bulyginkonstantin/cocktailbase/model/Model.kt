@@ -8,6 +8,6 @@ data class Cocktail(
     val strGlass: String,
     val strInstructions: String,
     val strDrinkThumb: String,
-    val strIngredient: MutableList<String>,
+    //val strIngredient: MutableList<String>,
     val dateModified: String
 )
