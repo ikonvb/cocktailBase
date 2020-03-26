@@ -6,7 +6,7 @@ import retrofit2.http.GET
 interface CocktailApi {
 
     //endpoint to search by name
-    @GET("api/json/v1/1/search.php?s=margarita")
+    @GET("api/json/v1/1/search.php?f=a")
     fun getCocktailsByName(): Single<List<Cocktail>>
 
     //endpoint to search by letter
@@ -20,6 +20,4 @@ interface CocktailApi {
     //endpoint to Search cocktail by ingredient
     @GET("api/json/v1/1/filter.php?i=Gin")
     fun getCocktailByIngredient(): Single<List<Cocktail>>
-
-
 }

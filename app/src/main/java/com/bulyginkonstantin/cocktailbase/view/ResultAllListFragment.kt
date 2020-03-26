@@ -31,7 +31,7 @@ class ResultAllListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModelResult = ViewModelProviders.of(this).get(ResultListViewModel::class.java)
-        viewModelResult.refreshInfo()
+        viewModelResult.refreshData()
 
         rvCocktailsList.apply {
             layoutManager = LinearLayoutManager(context)

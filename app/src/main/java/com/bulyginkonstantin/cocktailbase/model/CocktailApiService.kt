@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CocktailApiService {
 
-    private val BASE_URL = "https://www.thecocktaildb.com"
+    private val BASE_URL = "https://raw.githubusercontent.com"
     private val api = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -18,4 +18,11 @@ class CocktailApiService {
     fun getCocktailsByLetter(): Single<List<Cocktail>> {
         return api.getCocktailsByLetter()
     }
+
+    fun getCocktailsByName(): Single<List<Cocktail>> {
+        return api.getCocktailsByName()
+    }
 }
+
+// https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a
+// https://raw.githubusercontent.com/DevTides/DogsApi/master/dogs.json

@@ -22,11 +22,16 @@ data class Cocktail(
     val instructions: String,
 
     @SerializedName("strDrinkThumb")
-    val imgUrl: String,
+    val imgUrl: String
 
 //    @SerializedName("strIngredient")
 //    val ingredients: MutableList<String>,
 
-    @SerializedName("dateModified")
-    val lastDateModified: String
+//    @SerializedName("dateModified")
+//    val lastDateModified: String
+)
+
+data class Drinks(
+    @SerializedName("drinks")
+    val drinkObjectOfArrays: List<Cocktail>
 )
