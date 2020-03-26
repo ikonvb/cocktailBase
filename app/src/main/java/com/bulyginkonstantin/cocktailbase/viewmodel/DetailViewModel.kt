@@ -9,7 +9,7 @@ class DetailViewModel : ViewModel() {
     val cocktailLiveData = MutableLiveData<Cocktail>()
 
     fun fetchFromDatabase() {
-        val cocktail1 = Cocktail("1", "Margarita", "Ordinary", "Alcoholic", "glass", "drink it", "sdsdsd")
+        val cocktail1 = Cocktail("1", "Margarita", "Ordinary", "Alcoholic", "glass", "drink it", "sdsdsd", "3213212121")
         cocktailLiveData.value = cocktail1
     }
 }

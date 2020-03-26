@@ -7,6 +7,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bulyginkonstantin.cocktailbase.R
 import com.bulyginkonstantin.cocktailbase.model.Cocktail
+import com.bulyginkonstantin.cocktailbase.util.getProgressDrawable
+import com.bulyginkonstantin.cocktailbase.util.loadImage
 import com.bulyginkonstantin.cocktailbase.view.ResultAllListFragmentDirections
 import kotlinx.android.synthetic.main.detail_cocktail_info.view.*
 
@@ -30,7 +32,7 @@ class CocktailListAdapter(private val cocktailList: ArrayList<Cocktail>) :
     override fun getItemCount() = cocktailList.size
 
     override fun onBindViewHolder(holder: CocktailViewHolder, position: Int) {
-        //todo: setup image url here
+        holder.view.imageViewSmallPoster.loadImage(cocktailList[position].imgUrl, getProgressDrawable(holder.view.imageViewSmallPoster.context))
         holder.view.textViewCocktailName.text = cocktailList[position].drinkName
         holder.view.setOnClickListener {
             Navigation.findNavController(it).navigate(ResultAllListFragmentDirections.actionToDetailInfoFragment())
