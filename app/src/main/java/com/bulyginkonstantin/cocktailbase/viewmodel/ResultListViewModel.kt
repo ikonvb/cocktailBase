@@ -1,11 +1,11 @@
 package com.bulyginkonstantin.cocktailbase.viewmodel
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bulyginkonstantin.cocktailbase.model.Cocktail
 import com.bulyginkonstantin.cocktailbase.model.CocktailApiService
+import com.bulyginkonstantin.cocktailbase.model.Drinks
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -27,18 +27,17 @@ class ResultListViewModel : ViewModel() {
     private fun fetchFromRemote() {
         loading.value = true
         disposable.add(
-            cocktailService.getCocktailsByLetter()
+            cocktailService.getCocktailsByName()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<List<Cocktail>>() {
+                .subscribeWith(object : DisposableSingleObserver<Drinks>() {
 
-                    override fun onSuccess(cocktailsFromRemote: List<Cocktail>) {
-
-                        for (i in cocktailsFromRemote) {
-                            Log.d("tag", "${cocktailsFromRemote[0]}")
+                    override fun onSuccess(cocktailsFromRemote: Drinks) {
+                        val cocktailArrayList = arrayListOf<Cocktail>()
+                        for (cocktail in cocktailsFromRemote.drinkObjectOfArrays) {
+                            cocktailArrayList.add(cocktail)
                         }
-                        Log.d("tag", "${cocktailsFromRemote[0]}")
-                        cocktails.value = cocktailsFromRemote
+                        cocktails.value = cocktailArrayList
                         cocktailsLoadError.value = false
                         loading.value = false
                     }
@@ -46,7 +45,6 @@ class ResultListViewModel : ViewModel() {
                     override fun onError(error: Throwable) {
                         cocktailsLoadError.value = true
                         loading.value = false
-                        Log.d("tag", "${error.printStackTrace()}")
                     }
                 })
         )
