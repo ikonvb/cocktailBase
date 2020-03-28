@@ -35,7 +35,9 @@ class CocktailListAdapter(private val cocktailList: ArrayList<Cocktail>) :
         holder.view.imageViewSmallPoster.loadImage(cocktailList[position].imgUrl, getProgressDrawable(holder.view.imageViewSmallPoster.context))
         holder.view.textViewCocktailName.text = cocktailList[position].drinkName
         holder.view.setOnClickListener {
-            Navigation.findNavController(it).navigate(ResultAllListFragmentDirections.actionToDetailInfoFragment())
+            val action = ResultAllListFragmentDirections.actionToDetailInfoFragment()
+            action.cocktailId = cocktailList[position].uuid
+            Navigation.findNavController(it).navigate(action)
         }
     }
 }

@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bulyginkonstantin.cocktailbase.R
+import com.bulyginkonstantin.cocktailbase.util.getProgressDrawable
+import com.bulyginkonstantin.cocktailbase.util.loadImage
 import com.bulyginkonstantin.cocktailbase.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment_detail_info.*
 
@@ -29,24 +31,26 @@ class DetailInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        viewModel.fetchFromDatabase()
-
         arguments?.let {
             cocktailId = DetailInfoFragmentArgs.fromBundle(it).cocktailId
         }
-
+        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        viewModel.fetchFromDatabase(cocktailId)
         observeViewModel()
     }
 
     private fun observeViewModel() {
         viewModel.cocktailLiveData.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                cocktailNameTextView.text = it.drinkName
-                glassTextView.text = it.glass
-                alcoholicTextView.text = it.isAlcoholic
-                styleTextView.text = it.category
-                instructionsTextView.text = it.instructions
+            it?.let { cocktail ->
+                cocktailNameTextView.text = cocktail.drinkName
+                glassTextView.text = cocktail.glass
+                alcoholicTextView.text = cocktail.isAlcoholic
+                styleTextView.text = cocktail.category
+                instructionsTextView.text = cocktail.instructions
+                context?.let { it ->
+                    cocktailImageView.loadImage(cocktail.imgUrl, getProgressDrawable(it))
+                }
+
             }
         })
     }
