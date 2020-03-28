@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Cocktail::class], version = 3)
+@Database(entities = [Cocktail::class, FavouriteCocktail::class], version = 4)
 abstract class CocktailDatabase : RoomDatabase() {
     abstract fun getCocktailDao(): CocktailDao
 
@@ -24,7 +24,7 @@ abstract class CocktailDatabase : RoomDatabase() {
             context.applicationContext,
             CocktailDatabase::class.java,
             "cocktail_database"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
 }

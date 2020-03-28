@@ -41,7 +41,7 @@ class DetailInfoFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.cocktailLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.detailCocktailLiveData.observe(viewLifecycleOwner, Observer {
             it?.let { _ ->
                 dataBinding.cocktailDetail = it
             }

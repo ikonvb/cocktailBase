@@ -3,10 +3,7 @@ package com.bulyginkonstantin.cocktailbase.viewmodel
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.bulyginkonstantin.cocktailbase.model.Cocktail
-import com.bulyginkonstantin.cocktailbase.model.CocktailApiService
-import com.bulyginkonstantin.cocktailbase.model.CocktailDatabase
-import com.bulyginkonstantin.cocktailbase.model.Drinks
+import com.bulyginkonstantin.cocktailbase.model.*
 import com.bulyginkonstantin.cocktailbase.util.SharedPreferencesHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -43,7 +40,11 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         launch {
             val cocktails = CocktailDatabase(getApplication()).getCocktailDao().getAllCocktails()
             cocktailsRetrieved(cocktails)
-            Toast.makeText(getApplication(),"Cocktails retrieved from database", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                getApplication(),
+                "Cocktails retrieved from database",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -58,7 +59,11 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
                     override fun onSuccess(cocktailsFromRemote: Drinks) {
                         val list = getCocktails(cocktailsFromRemote)
                         storeCocktailsLocally(list)
-                        Toast.makeText(getApplication(),"Cocktails retrieved from Internet",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            getApplication(),
+                            "Cocktails retrieved from Internet",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                     override fun onError(error: Throwable) {
@@ -95,7 +100,7 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         prefHelper.saveUpdateTime(System.nanoTime())
     }
 
-    //add cocktails MutableLiveData and to recycler View
+    //add cocktails to MutableLiveData and to recycler View
     private fun cocktailsRetrieved(list: List<Cocktail>) {
         cocktails.value = list
         cocktailsLoadError.value = false

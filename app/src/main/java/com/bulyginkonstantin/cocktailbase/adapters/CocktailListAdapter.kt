@@ -9,16 +9,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bulyginkonstantin.cocktailbase.R
 import com.bulyginkonstantin.cocktailbase.databinding.DetailCocktailInfoBinding
 import com.bulyginkonstantin.cocktailbase.model.Cocktail
+import com.bulyginkonstantin.cocktailbase.model.FavouriteCocktail
 import com.bulyginkonstantin.cocktailbase.view.CocktailClickListener
 import com.bulyginkonstantin.cocktailbase.view.ResultAllListFragmentDirections
 import kotlinx.android.synthetic.main.detail_cocktail_info.view.*
 
-class CocktailListAdapter(private val cocktailList: ArrayList<Cocktail>) :
+class CocktailListAdapter :
     RecyclerView.Adapter<CocktailListAdapter.CocktailViewHolder>(), CocktailClickListener {
+
+    private val cocktailList =  ArrayList<Cocktail>()
+    private val favCocktailList = ArrayList<FavouriteCocktail>()
 
     fun updateCocktailList(newCocktailList: List<Cocktail>) {
         cocktailList.clear()
         cocktailList.addAll(newCocktailList)
+        notifyDataSetChanged()
+    }
+
+    fun updateCocktailListWithFav(newCocktailList: List<FavouriteCocktail>) {
+        cocktailList.clear()
+        favCocktailList.addAll(newCocktailList)
         notifyDataSetChanged()
     }
 

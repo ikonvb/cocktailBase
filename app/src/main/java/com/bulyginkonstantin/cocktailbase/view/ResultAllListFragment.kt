@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_result_list.*
  */
 class ResultAllListFragment : Fragment() {
     private lateinit var viewModelResult: ResultListViewModel
-    private val cocktailListAdapter = CocktailListAdapter(arrayListOf())
+    private val cocktailListAdapter = CocktailListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
