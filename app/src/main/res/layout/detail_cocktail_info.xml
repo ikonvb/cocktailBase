@@ -2,6 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="cocktail"
+            type="com.bulyginkonstantin.cocktailbase.model.Cocktail" />
+
+        <variable
+            name="listener"
+            type="com.bulyginkonstantin.cocktailbase.view.CocktailClickListener" />
+    </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,7 +22,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{listener::onCocktailClicked}"
             android:background="@color/main_background">
+
+            <TextView
+                android:id="@+id/cocktailId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(cocktail.uuid)}"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageViewSmallPoster"
@@ -23,6 +46,7 @@
                 android:layout_marginBottom="8dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/cocktail_photo"
+                android:imgUrl="@{cocktail.imgUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/montserrat"
+                android:text="@{cocktail.drinkName}"
                 android:textColor="@color/black_for_text"
                 android:textSize="16sp"
                 android:textStyle="bold"
