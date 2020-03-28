@@ -9,35 +9,35 @@ import com.google.gson.annotations.SerializedName
 data class Cocktail(
     @ColumnInfo(name = "drink_id")
     @SerializedName("idDrink")
-    val idDrink: String,
+    val idDrink: String?,
 
     @ColumnInfo(name = "drink_name")
     @SerializedName("strDrink")
-    val drinkName: String,
+    val drinkName: String?,
 
     @ColumnInfo(name = "drink_category")
     @SerializedName("strCategory")
-    val category: String,
+    val category: String?,
 
     @ColumnInfo(name = "drink_alcoholic")
     @SerializedName("strAlcoholic")
-    val isAlcoholic: String,
+    val isAlcoholic: String?,
 
     @ColumnInfo(name = "drink_glass")
     @SerializedName("strGlass")
-    val glass: String,
+    val glass: String?,
 
     @ColumnInfo(name = "drink_instructions")
     @SerializedName("strInstructions")
-    val instructions: String,
+    val instructions: String?,
 
     @ColumnInfo(name = "drink_url")
     @SerializedName("strDrinkThumb")
-    val imgUrl: String,
+    val imgUrl: String?,
 
     @ColumnInfo(name = "modified_date")
     @SerializedName("dateModified")
-    val lastDateModified: String
+    val lastDateModified: String?
 
 //    @SerializedName("strIngredient")
 //    val ingredients: MutableList<String>
