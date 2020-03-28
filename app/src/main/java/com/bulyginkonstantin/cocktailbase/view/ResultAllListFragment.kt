@@ -38,6 +38,14 @@ class ResultAllListFragment : Fragment() {
             adapter = cocktailListAdapter
         }
 
+        refreshLayout.setOnRefreshListener {
+            rvCocktailsList.visibility = View.GONE
+            errorList.visibility = View.GONE
+            loadingProgressBar.visibility = View.VISIBLE
+            viewModelResult.refreshByPassCache()
+            refreshLayout.isRefreshing = false
+        }
+
         observeViewModel()
     }
 
