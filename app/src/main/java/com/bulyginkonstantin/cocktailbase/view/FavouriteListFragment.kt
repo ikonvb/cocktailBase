@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bulyginkonstantin.cocktailbase.R
 import com.bulyginkonstantin.cocktailbase.adapters.CocktailListAdapter
-import com.bulyginkonstantin.cocktailbase.model.Cocktail
 import com.bulyginkonstantin.cocktailbase.viewmodel.FavouriteViewModel
 import kotlinx.android.synthetic.main.fragment_favourite_list.*
 

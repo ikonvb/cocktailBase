@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Cocktail::class, FavouriteCocktail::class], version = 4)
+@Database(entities = [Cocktail::class, FavouriteCocktail::class], version = 4, exportSchema = false)
 abstract class CocktailDatabase : RoomDatabase() {
     abstract fun getCocktailDao(): CocktailDao
+    abstract fun getFavouriteCocktailDao(): FavouriteCocktailDao
 
     companion object {
         @Volatile

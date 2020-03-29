@@ -19,7 +19,7 @@ class FavouriteViewModel(application: Application) : BaseViewModel(application) 
     fun fetchFromDatabase() {
         //loading.value = true
         launch {
-            val cocktails = CocktailDatabase(getApplication()).getCocktailDao().getAllCocktailsFromFavourite()
+            val cocktails = CocktailDatabase(getApplication()).getFavouriteCocktailDao().getAllCocktailsFromFavourite()
             cocktailsRetrieved(cocktails)
             Toast.makeText(
                 getApplication(),

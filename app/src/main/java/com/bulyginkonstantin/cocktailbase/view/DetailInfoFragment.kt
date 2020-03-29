@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.bulyginkonstantin.cocktailbase.R
 import com.bulyginkonstantin.cocktailbase.databinding.FragmentDetailInfoBinding
 import com.bulyginkonstantin.cocktailbase.viewmodel.DetailViewModel
+import kotlinx.android.synthetic.main.fragment_detail_info.*
 
 /**
  * A simple [Fragment] subclass.
@@ -35,13 +36,26 @@ class DetailInfoFragment : Fragment() {
         arguments?.let {
             cocktailId = DetailInfoFragmentArgs.fromBundle(it).cocktailId
         }
+
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        viewModel.fetchFromDatabase(cocktailId)
+        viewModel.fetchFromDatabaseById(cocktailId)
+
         observeViewModel()
+
+        buttonChangeFavourites.setOnClickListener {
+//            val cocktail = viewModel.getFavouriteCocktailFromDatabase(cocktailId)
+//            if (cocktail == null) {
+//                viewModel.insertFavouriteCocktail(viewModel.cocktailFromDatabase.value)
+//                Toast.makeText(context, "Cocktail added to favourite", Toast.LENGTH_SHORT).show()
+//            } else {
+//                viewModel.deleteFavouriteCocktail(cocktailId)
+//                Toast.makeText(context, "Cocktail deleted from favourite", Toast.LENGTH_SHORT).show()
+//            }
+        }
     }
 
     private fun observeViewModel() {
-        viewModel.detailCocktailLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.cocktailFromDatabase.observe(viewLifecycleOwner, Observer {
             it?.let { _ ->
                 dataBinding.cocktailDetail = it
             }
