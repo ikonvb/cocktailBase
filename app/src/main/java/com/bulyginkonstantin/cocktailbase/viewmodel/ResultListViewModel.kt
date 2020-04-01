@@ -88,15 +88,9 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         launch {
             val dao = CocktailDatabase(getApplication()).getCocktailDao()
             dao.deleteAllCocktails()
-            val result = dao.insertAll(*list.toTypedArray())
-            var i = 0
-            while (i < list.size) {
-                list[i].uuid = result[i].toInt()
-                ++i
-            }
+            dao.insertAll(list)
             cocktailsRetrieved(list)
         }
-
         prefHelper.saveUpdateTime(System.nanoTime())
     }
 

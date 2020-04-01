@@ -14,12 +14,12 @@ interface FavouriteCocktailDao : BaseDao<FavouriteCocktail> {
     @Query("SELECT * FROM favourite_cocktails")
     suspend fun getAllCocktailsFromFavourite(): List<FavouriteCocktail>
 
-    @Query("SELECT * FROM favourite_cocktails WHERE uuid=:cocktailId")
+    @Query("SELECT * FROM favourite_cocktails WHERE drink_id ==:cocktailId")
     suspend fun getFavouriteCocktailById(cocktailId: Int): FavouriteCocktail
 
     @Query("DELETE FROM favourite_cocktails")
     suspend fun deleteAllFavouriteCocktails()
 
-    @Query("DELETE FROM favourite_cocktails WHERE uuid=:cocktailId")
+    @Query("DELETE FROM favourite_cocktails WHERE drink_id ==:cocktailId")
     suspend fun deleteFavouriteCocktailsByIId(cocktailId: Int)
 }

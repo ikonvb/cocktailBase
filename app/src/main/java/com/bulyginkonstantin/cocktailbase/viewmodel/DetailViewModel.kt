@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 class DetailViewModel(application: Application) : BaseViewModel(application) {
 
     val cocktailFromDatabase = MutableLiveData<Cocktail>()
-    // var favouriteCocktailFromDatabase: FavouriteCocktail? = null
+    val dbCocktail = CocktailDatabase.invoke(getApplication()).getCocktailDao()
+    val dbFavCocktail = CocktailDatabase.invoke(getApplication()).getFavouriteCocktailDao()
 
 
     fun fetchFromDatabaseById(uuid: Int) {
@@ -18,29 +19,4 @@ class DetailViewModel(application: Application) : BaseViewModel(application) {
             cocktailFromDatabase.value = cocktail
         }
     }
-
-//    fun getFavouriteCocktailFromDatabase(uuid: Int): FavouriteCocktail? {
-//        launch {
-//            favouriteCocktailFromDatabase =
-//                CocktailDatabase(getApplication()).getCocktailDao().getFavouriteCocktailById(uuid)
-//        }
-//        return if (favouriteCocktailFromDatabase != null) favouriteCocktailFromDatabase else null
-//    }
-//
-//    fun insertFavouriteCocktail(cocktail: Cocktail?) {
-//        launch {
-//            if (cocktail != null) {
-//                val dao = CocktailDatabase(getApplication()).getCocktailDao()
-//                dao.insertInFavourite(cocktail)
-//            }
-//        }
-//    }
-//
-//    fun deleteFavouriteCocktail(cocktailId: Int) {
-//        launch {
-//            CocktailDatabase(getApplication()).getCocktailDao()
-//                .deleteFavouriteCocktailsByIId(cocktailId)
-//        }
-//    }
-
 }

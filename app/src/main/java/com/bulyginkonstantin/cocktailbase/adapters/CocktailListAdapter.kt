@@ -1,5 +1,6 @@
 package com.bulyginkonstantin.cocktailbase.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.detail_cocktail_info.view.*
 class CocktailListAdapter :
     RecyclerView.Adapter<CocktailListAdapter.CocktailViewHolder>(), CocktailClickListener {
 
-    private val cocktailList =  ArrayList<Cocktail>()
+    private val cocktailList = ArrayList<Cocktail>()
     private val favCocktailList = ArrayList<FavouriteCocktail>()
 
     fun updateCocktailList(newCocktailList: List<Cocktail>) {
@@ -27,13 +28,11 @@ class CocktailListAdapter :
     }
 
     fun updateCocktailListWithFav(newCocktailList: List<FavouriteCocktail>) {
-        cocktailList.clear()
+        favCocktailList.clear()
         favCocktailList.addAll(newCocktailList)
         notifyDataSetChanged()
     }
 
-    class CocktailViewHolder(var view: DetailCocktailInfoBinding) :
-        RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CocktailViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -54,9 +53,12 @@ class CocktailListAdapter :
     }
 
     override fun onCocktailClicked(v: View) {
-        val uuid = v.cocktailId.text.toString().toInt()
+        val drinkId = v.cocktailId.text.toString().toInt()
         val action = ResultAllListFragmentDirections.actionToDetailInfoFragment()
-        action.cocktailId = uuid
+        action.cocktailId = drinkId
         Navigation.findNavController(v).navigate(action)
     }
+
+    class CocktailViewHolder(var view: DetailCocktailInfoBinding) :
+        RecyclerView.ViewHolder(view.root)
 }

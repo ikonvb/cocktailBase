@@ -31,7 +31,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
 
 def lifeCycleExtensionVersion = '1.1.1'
@@ -71,4 +70,6 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.facebook.stetho:stetho:1.5.1'
 }

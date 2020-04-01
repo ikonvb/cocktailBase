@@ -7,9 +7,10 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Cocktail(
+    @PrimaryKey
     @ColumnInfo(name = "drink_id")
     @SerializedName("idDrink")
-    val idDrink: String?,
+    var drink_id: String,
 
     @ColumnInfo(name = "drink_name")
     @SerializedName("strDrink")
@@ -41,10 +42,7 @@ data class Cocktail(
 
 //    @SerializedName("strIngredient")
 //    val ingredients: MutableList<String>
-) {
-    @PrimaryKey(autoGenerate = true)
-    var uuid: Int = 0
-}
+)
 
 data class Drinks(
     @SerializedName("drinks")
@@ -53,9 +51,10 @@ data class Drinks(
 
 @Entity(tableName = "favourite_cocktails")
 data class FavouriteCocktail(
+    @PrimaryKey
     @ColumnInfo(name = "drink_id")
     @SerializedName("idDrink")
-    val idDrink: String?,
+    val drink_id: String,
 
     @ColumnInfo(name = "drink_name")
     @SerializedName("strDrink")
@@ -87,7 +86,4 @@ data class FavouriteCocktail(
 
 //    @SerializedName("strIngredient")
 //    val ingredients: MutableList<String>
-) {
-    @PrimaryKey(autoGenerate = true)
-    var uuid: Int = 0
-}
+)
