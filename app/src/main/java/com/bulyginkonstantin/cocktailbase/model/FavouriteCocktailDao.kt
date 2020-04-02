@@ -1,16 +1,13 @@
 package com.bulyginkonstantin.cocktailbase.model
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
-interface FavouriteCocktailDao : BaseDao<FavouriteCocktail> {
+interface FavouriteCocktailDao {
 
     //methods for work with "favourite_cocktails" table
-    @Insert
-    suspend fun insertInFavourite(cocktail: FavouriteCocktail?)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertInFavourite(cocktail: FavouriteCocktail)
 
     @Query("SELECT * FROM favourite_cocktails")
     suspend fun getAllCocktailsFromFavourite(): List<FavouriteCocktail>

@@ -12,11 +12,12 @@ class DetailViewModel(application: Application) : BaseViewModel(application) {
     val cocktailFromDatabase = MutableLiveData<Cocktail>()
     val favCocktailFromDatabase = MutableLiveData<FavouriteCocktail>()
     private val dbFavCocktail = CocktailDatabase.invoke(getApplication()).getFavouriteCocktailDao()
+    private val dbCocktail = CocktailDatabase.invoke(getApplication()).getCocktailDao()
 
 
     fun fetchFromDatabaseById(drinkId: Int) {
         launch {
-            val cocktail = CocktailDatabase(getApplication()).getCocktailDao().getCocktailById(drinkId)
+            val cocktail = dbCocktail.getCocktailById(drinkId)
             cocktailFromDatabase.value = cocktail
         }
     }

@@ -42,31 +42,32 @@ class DetailInfoFragment : Fragment() {
         arguments?.let {
             cocktailId = DetailInfoFragmentArgs.fromBundle(it).cocktailId
         }
-
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        viewModel.fetchFromDatabaseById(cocktailId)
-        viewModel.getFavCocktailById(cocktailId)
-
-        observeViewModel()
+        viewModelInit()
 
         buttonChangeFavourites.setOnClickListener {
-
             if (favCocktail == null) {
                 viewModel.insertFavCocktail(FavouriteCocktail(plainCocktail))
-                Log.d("tag", "from add ${favCocktail.toString()}")
-                Toast.makeText(context, "added to db", Toast.LENGTH_SHORT).show()
+                viewModelInit()
+                Log.d("tag", "$favCocktail")
+                Toast.makeText(context, "added to favourite", Toast.LENGTH_SHORT).show()
             } else {
-                favCocktail?.let {
-                    Log.d("tag", "from remove ${favCocktail.toString()}")
-                    viewModel.deleteFavCocktail(it)
-                    favCocktail = null
-                    Toast.makeText(context, "deleted from db", Toast.LENGTH_SHORT).show()
-                }
+                viewModel.deleteFavCocktail(favCocktail!!)
+                favCocktail = null
+                Log.d("tag", "$favCocktail")
+                Toast.makeText(context, "remove from favourite", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun viewModelInit() {
+        viewModel.fetchFromDatabaseById(cocktailId)
+        viewModel.getFavCocktailById(cocktailId)
+        observeViewModel()
+    }
+
     private fun observeViewModel() {
+
         viewModel.cocktailFromDatabase.observe(viewLifecycleOwner, Observer {
             it?.let { _ ->
                 dataBinding.cocktailDetail = it
@@ -77,8 +78,10 @@ class DetailInfoFragment : Fragment() {
         viewModel.favCocktailFromDatabase.observe(viewLifecycleOwner, Observer {
             it?.let {
                 favCocktail = it
-                Log.d("tag", "from observer ${favCocktail.toString()}")
             }
         })
+
     }
+
+
 }
