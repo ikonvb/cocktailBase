@@ -1,6 +1,7 @@
 package com.bulyginkonstantin.cocktailbase.model
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -9,7 +10,7 @@ interface FavouriteCocktailDao : BaseDao<FavouriteCocktail> {
 
     //methods for work with "favourite_cocktails" table
     @Insert
-    suspend fun insertInFavourite(vararg cocktails: FavouriteCocktail): List<Long>
+    suspend fun insertInFavourite(cocktail: FavouriteCocktail?)
 
     @Query("SELECT * FROM favourite_cocktails")
     suspend fun getAllCocktailsFromFavourite(): List<FavouriteCocktail>
@@ -20,6 +21,6 @@ interface FavouriteCocktailDao : BaseDao<FavouriteCocktail> {
     @Query("DELETE FROM favourite_cocktails")
     suspend fun deleteAllFavouriteCocktails()
 
-    @Query("DELETE FROM favourite_cocktails WHERE drink_id ==:cocktailId")
-    suspend fun deleteFavouriteCocktailsByIId(cocktailId: Int)
+    @Delete
+    suspend fun deleteFavouriteCocktail(cocktail: FavouriteCocktail)
 }

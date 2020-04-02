@@ -1,9 +1,11 @@
 package com.bulyginkonstantin.cocktailbase.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -24,7 +26,7 @@ class DetailInfoFragment : Fragment() {
     private var cocktailId = 0
     private lateinit var dataBinding: FragmentDetailInfoBinding
     private lateinit var plainCocktail: Cocktail
-    private lateinit var favCocktail: FavouriteCocktail
+    private var favCocktail: FavouriteCocktail? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +45,24 @@ class DetailInfoFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
         viewModel.fetchFromDatabaseById(cocktailId)
+        viewModel.getFavCocktailById(cocktailId)
 
         observeViewModel()
+
         buttonChangeFavourites.setOnClickListener {
 
+            if (favCocktail == null) {
+                viewModel.insertFavCocktail(FavouriteCocktail(plainCocktail))
+                Log.d("tag", "from add ${favCocktail.toString()}")
+                Toast.makeText(context, "added to db", Toast.LENGTH_SHORT).show()
+            } else {
+                favCocktail?.let {
+                    Log.d("tag", "from remove ${favCocktail.toString()}")
+                    viewModel.deleteFavCocktail(it)
+                    favCocktail = null
+                    Toast.makeText(context, "deleted from db", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -54,6 +70,14 @@ class DetailInfoFragment : Fragment() {
         viewModel.cocktailFromDatabase.observe(viewLifecycleOwner, Observer {
             it?.let { _ ->
                 dataBinding.cocktailDetail = it
+                plainCocktail = it
+            }
+        })
+
+        viewModel.favCocktailFromDatabase.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                favCocktail = it
+                Log.d("tag", "from observer ${favCocktail.toString()}")
             }
         })
     }

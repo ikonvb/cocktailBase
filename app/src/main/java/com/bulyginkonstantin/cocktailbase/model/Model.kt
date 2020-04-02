@@ -2,6 +2,7 @@ package com.bulyginkonstantin.cocktailbase.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
@@ -86,4 +87,7 @@ data class FavouriteCocktail(
 
 //    @SerializedName("strIngredient")
 //    val ingredients: MutableList<String>
-)
+) {
+    @Ignore
+    constructor(cocktail: Cocktail): this(cocktail.drink_id, cocktail.drinkName, cocktail.category, cocktail.isAlcoholic, cocktail.glass, cocktail.instructions, cocktail.imgUrl, cocktail.lastDateModified)
+}
