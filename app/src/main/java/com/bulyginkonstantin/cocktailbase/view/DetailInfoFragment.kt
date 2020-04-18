@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.bulyginkonstantin.cocktailbase.R
 import com.bulyginkonstantin.cocktailbase.databinding.FragmentDetailInfoBinding
 import com.bulyginkonstantin.cocktailbase.model.Cocktail
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_detail_info.*
  */
 class DetailInfoFragment : Fragment() {
 
-    private lateinit var viewModel: DetailViewModel
+    private lateinit var detailViewModel: DetailViewModel
     private var cocktailId = 0
     private lateinit var dataBinding: FragmentDetailInfoBinding
     private lateinit var plainCocktail: Cocktail
@@ -42,46 +42,57 @@ class DetailInfoFragment : Fragment() {
         arguments?.let {
             cocktailId = DetailInfoFragmentArgs.fromBundle(it).cocktailId
         }
-        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
         viewModelInit()
+        observePlainCocktail()
+        observeFavouriteCocktail()
 
         buttonChangeFavourites.setOnClickListener {
+
             if (favCocktail == null) {
-                viewModel.insertFavCocktail(FavouriteCocktail(plainCocktail))
-                viewModelInit()
-                Log.d("tag", "$favCocktail")
+                favCocktail = FavouriteCocktail(plainCocktail)
+                detailViewModel.insertFavCocktail(favCocktail!!)
                 Toast.makeText(context, "added to favourite", Toast.LENGTH_SHORT).show()
             } else {
-                viewModel.deleteFavCocktail(favCocktail!!)
+                detailViewModel.deleteFavCocktail(favCocktail!!)
                 favCocktail = null
-                Log.d("tag", "$favCocktail")
                 Toast.makeText(context, "remove from favourite", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun viewModelInit() {
-        viewModel.fetchFromDatabaseById(cocktailId)
-        viewModel.getFavCocktailById(cocktailId)
-        observeViewModel()
+        detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        detailViewModel.getCocktailById(cocktailId)
+        detailViewModel.getFavCocktailById(cocktailId)
     }
 
-    private fun observeViewModel() {
+    private fun observePlainCocktail() {
 
-        viewModel.cocktailFromDatabase.observe(viewLifecycleOwner, Observer {
+        detailViewModel.cocktailFromDatabase.observe(viewLifecycleOwner, Observer {
             it?.let { _ ->
                 dataBinding.cocktailDetail = it
                 plainCocktail = it
             }
         })
 
-        viewModel.favCocktailFromDatabase.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                favCocktail = it
-            }
-        })
-
     }
 
+    private fun observeFavouriteCocktail() {
+        detailViewModel.favCocktailFromDatabase.observe(viewLifecycleOwner, Observer {
+            favCocktail = it
+        })
+    }
+
+
+//    private fun setFavourite() {
+//        if (favCocktail == null) {
+//            Log.d("tag", "$favCocktail")
+//            buttonChangeFavourites.text = "Add to favourite"
+//        } else {
+//            Log.d("tag", "$favCocktail")
+//            buttonChangeFavourites.text = "Remove favourite"
+//        }
+//    }
 
 }

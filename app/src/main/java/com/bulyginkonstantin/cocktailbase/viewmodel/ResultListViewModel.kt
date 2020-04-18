@@ -2,8 +2,12 @@ package com.bulyginkonstantin.cocktailbase.viewmodel
 
 import android.app.Application
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.bulyginkonstantin.cocktailbase.model.*
+import com.bulyginkonstantin.cocktailbase.model.Cocktail
+import com.bulyginkonstantin.cocktailbase.model.CocktailApiService
+import com.bulyginkonstantin.cocktailbase.model.CocktailDatabase
+import com.bulyginkonstantin.cocktailbase.model.Drinks
 import com.bulyginkonstantin.cocktailbase.util.SharedPreferencesHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,9 +22,17 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
     private val cocktailService = CocktailApiService()
     private val disposable = CompositeDisposable()
 
-    val cocktails = MutableLiveData<List<Cocktail>>()
-    val cocktailsLoadError = MutableLiveData<Boolean>()
-    val loading = MutableLiveData<Boolean>()
+    private val _cocktails = MutableLiveData<List<Cocktail>>()
+    val cocktails: LiveData<List<Cocktail>>
+        get() = _cocktails
+
+    private val _cocktailsLoadError = MutableLiveData<Boolean>()
+    val cocktailsLoadError: LiveData<Boolean>
+        get() = _cocktailsLoadError
+
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean>
+        get() = _loading
 
     fun refreshData() {
         val updateTime = prefHelper.getUpdateTime()
@@ -36,7 +48,7 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
     }
 
     private fun fetchFromDatabase() {
-        loading.value = true
+        _loading.value = true
         launch {
             val cocktails = CocktailDatabase(getApplication()).getCocktailDao().getAllCocktails()
             cocktailsRetrieved(cocktails)
@@ -49,7 +61,7 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
     }
 
     private fun fetchFromRemote() {
-        loading.value = true
+        _loading.value = true
         disposable.add(
             cocktailService.getCocktailsByName()
                 .subscribeOn(Schedulers.newThread())
@@ -67,8 +79,8 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
                     }
 
                     override fun onError(error: Throwable) {
-                        cocktailsLoadError.value = true
-                        loading.value = false
+                        _cocktailsLoadError.value = true
+                        _loading.value = false
                     }
                 })
         )
@@ -96,9 +108,9 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
 
     //add cocktails to MutableLiveData and to recycler View
     private fun cocktailsRetrieved(list: List<Cocktail>) {
-        cocktails.value = list
-        cocktailsLoadError.value = false
-        loading.value = false
+        _cocktails.value = list
+        _cocktailsLoadError.value = false
+        _loading.value = false
     }
 
     override fun onCleared() {

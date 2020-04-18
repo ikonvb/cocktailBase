@@ -1,6 +1,7 @@
 package com.bulyginkonstantin.cocktailbase.viewmodel
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.bulyginkonstantin.cocktailbase.model.Cocktail
 import com.bulyginkonstantin.cocktailbase.model.CocktailDatabase
@@ -9,35 +10,38 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application) : BaseViewModel(application) {
 
-    val cocktailFromDatabase = MutableLiveData<Cocktail>()
-    val favCocktailFromDatabase = MutableLiveData<FavouriteCocktail>()
-    private val dbFavCocktail = CocktailDatabase.invoke(getApplication()).getFavouriteCocktailDao()
-    private val dbCocktail = CocktailDatabase.invoke(getApplication()).getCocktailDao()
+    private val _cocktailFromDatabase = MutableLiveData<Cocktail>()
+    val cocktailFromDatabase: LiveData<Cocktail>
+        get() = _cocktailFromDatabase
 
+    private val _favCocktailFromDatabase = MutableLiveData<FavouriteCocktail>()
+    val favCocktailFromDatabase: LiveData<FavouriteCocktail>
+        get() = _favCocktailFromDatabase
 
-    fun fetchFromDatabaseById(drinkId: Int) {
+    private val dbFavCocktailDao = CocktailDatabase.invoke(getApplication()).getFavouriteCocktailDao()
+    private val dbCocktailDao = CocktailDatabase.invoke(getApplication()).getCocktailDao()
+
+    fun getCocktailById(drinkId: Int) {
         launch {
-            val cocktail = dbCocktail.getCocktailById(drinkId)
-            cocktailFromDatabase.value = cocktail
+            _cocktailFromDatabase.value = dbCocktailDao.getCocktailById(drinkId)
         }
     }
 
     fun getFavCocktailById(drinkId: Int) {
         launch {
-            val favCocktail = dbFavCocktail.getFavouriteCocktailById(drinkId)
-            favCocktailFromDatabase.value = favCocktail
+            _favCocktailFromDatabase.value = dbFavCocktailDao.getFavouriteCocktailById(drinkId)
         }
     }
 
     fun insertFavCocktail(cocktail: FavouriteCocktail) {
         launch {
-            dbFavCocktail.insertInFavourite(cocktail)
+            dbFavCocktailDao.insertInFavourite(cocktail)
         }
     }
 
     fun deleteFavCocktail(cocktail: FavouriteCocktail) {
         launch {
-            dbFavCocktail.deleteFavouriteCocktail(cocktail)
+            dbFavCocktailDao.deleteFavouriteCocktail(cocktail)
         }
     }
 }
