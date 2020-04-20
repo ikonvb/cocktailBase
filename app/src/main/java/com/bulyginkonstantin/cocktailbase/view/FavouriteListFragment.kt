@@ -9,14 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bulyginkonstantin.cocktailbase.R
-import com.bulyginkonstantin.cocktailbase.adapters.CocktailListAdapter
+import com.bulyginkonstantin.cocktailbase.adapters.FavouriteCocktailListAdapter
 import com.bulyginkonstantin.cocktailbase.viewmodel.FavouriteViewModel
 import kotlinx.android.synthetic.main.fragment_favourite_list.*
 
 class FavouriteListFragment : Fragment() {
 
     private lateinit var viewModelResult: FavouriteViewModel
-    private val cocktailListAdapter = CocktailListAdapter()
+    private val favCocktailListAdapter = FavouriteCocktailListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,21 +29,28 @@ class FavouriteListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModelResult = ViewModelProviders.of(this).get(FavouriteViewModel::class.java)
-        viewModelResult.fetchFromDatabase()
+
+        viewModelInit()
 
         rvFavoriteCocktailsList.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = cocktailListAdapter
+            adapter = favCocktailListAdapter
         }
+
         observeViewModel()
     }
 
+    private fun viewModelInit() {
+        viewModelResult = ViewModelProviders.of(this).get(FavouriteViewModel::class.java)
+        viewModelResult.getFavouriteFromDatabase()
+    }
+
     private fun observeViewModel() {
+
         viewModelResult.favouriteCocktails.observe(viewLifecycleOwner, Observer {
             it?.let {
                 rvFavoriteCocktailsList.visibility = View.VISIBLE
-                cocktailListAdapter.updateCocktailListWithFav(it)
+                favCocktailListAdapter.updateCocktailListWithFav(it)
             }
         })
 

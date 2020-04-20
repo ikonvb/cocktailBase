@@ -175,7 +175,6 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/oval_button"
-                android:text="@string/add_to_favourites"
                 android:textColor="@color/text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

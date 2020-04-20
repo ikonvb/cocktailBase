@@ -52,9 +52,11 @@ class DetailInfoFragment : Fragment() {
                 favCocktail = FavouriteCocktail(plainCocktail)
                 detailViewModel.insertFavCocktail(favCocktail!!)
                 Toast.makeText(context, "added to favourite", Toast.LENGTH_SHORT).show()
+                setFavourite()
             } else {
                 detailViewModel.deleteFavCocktail(favCocktail!!)
                 favCocktail = null
+                setFavourite()
                 Toast.makeText(context, "remove from favourite", Toast.LENGTH_SHORT).show()
             }
         }
@@ -81,18 +83,18 @@ class DetailInfoFragment : Fragment() {
     private fun observeFavouriteCocktail() {
         detailViewModel.favCocktailFromDatabase.observe(viewLifecycleOwner, Observer {
             favCocktail = it
+            setFavourite()
         })
     }
 
 
-//    private fun setFavourite() {
-//        if (favCocktail == null) {
-//            Log.d("tag", "$favCocktail")
-//            buttonChangeFavourites.text = "Add to favourite"
-//        } else {
-//            Log.d("tag", "$favCocktail")
-//            buttonChangeFavourites.text = "Remove favourite"
-//        }
-//    }
+    private fun setFavourite() {
+        Log.d("tag", "$favCocktail")
+        if (favCocktail == null) {
+            buttonChangeFavourites.text = getString(R.string.add_to_favourite)
+        } else {
+            buttonChangeFavourites.text = getString(R.string.remove_favourite)
+        }
+    }
 
 }

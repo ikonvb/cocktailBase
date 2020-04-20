@@ -36,5 +36,10 @@ class ChooseSearchFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
+        buttonFavourite.setOnClickListener {
+            val action = ChooseSearchFragmentDirections.actionFromChooseSearchFragmentToFavouriteListFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
 }

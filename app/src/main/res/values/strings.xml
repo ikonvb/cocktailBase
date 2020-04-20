@@ -16,4 +16,7 @@
     <string name="add_to_favourites">add to favourites</string>
     <string name="right_arrow">right arrow</string>
     <string name="error_message">An error occurred while loading data</string>
+    <string name="add_to_favourite">Add to favourite</string>
+    <string name="remove_favourite">Remove favourite</string>
+    <string name="favourite">favourite</string>
 </resources>
