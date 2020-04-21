@@ -48,9 +48,14 @@ class FavouriteListFragment : Fragment() {
     private fun observeViewModel() {
 
         viewModelResult.favouriteCocktails.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                rvFavoriteCocktailsList.visibility = View.VISIBLE
-                favCocktailListAdapter.updateCocktailListWithFav(it)
+            if (it.isEmpty()) {
+                emptyListFavorite.visibility = View.VISIBLE
+            } else {
+                it?.let {
+                    emptyListFavorite.visibility = View.GONE
+                    rvFavoriteCocktailsList.visibility = View.VISIBLE
+                    favCocktailListAdapter.updateCocktailListWithFav(it)
+                }
             }
         })
 

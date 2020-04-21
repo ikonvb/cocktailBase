@@ -19,4 +19,5 @@
     <string name="add_to_favourite">Add to favourite</string>
     <string name="remove_favourite">Remove favourite</string>
     <string name="favourite">favourite</string>
+    <string name="your_favourite_list_is_empty">Your favourite list is empty</string>
 </resources>
