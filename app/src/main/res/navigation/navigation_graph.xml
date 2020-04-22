@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.bulyginkonstantin.cocktailbase.view.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/fragment_main"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/actionToChooseSearchFragment"
@@ -20,9 +20,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/chooseSearchFragment"
+        android:id="@id/chooseSearchFragment"
         android:name="com.bulyginkonstantin.cocktailbase.view.ChooseSearchFragment"
-        android:label="fragment_choose_search"
+        android:label="@string/fragment_choose_search"
         tools:layout="@layout/fragment_choose_search">
         <action
             android:id="@+id/actionToSearchByNameFragment"
@@ -33,7 +33,7 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/actionToResulAlltListFragment"
-            app:destination="@id/resulAlltListFragment"
+            app:destination="@id/resultAllListFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -50,11 +50,11 @@
     <fragment
         android:id="@+id/searchByNameFragment"
         android:name="com.bulyginkonstantin.cocktailbase.view.SearchByNameFragment"
-        android:label="fragment_search_by_name"
+        android:label="@string/fragment_search_by_name"
         tools:layout="@layout/fragment_search_by_name">
         <action
             android:id="@+id/actionToResulAlltListFragment"
-            app:destination="@id/resulAlltListFragment"
+            app:destination="@id/resultAllListFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -62,9 +62,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/resulAlltListFragment"
+        android:id="@id/resultAllListFragment"
         android:name="com.bulyginkonstantin.cocktailbase.view.ResultAllListFragment"
-        android:label="fragment_result_list"
+        android:label="@string/fragment_result_list"
         tools:layout="@layout/fragment_result_list">
         <action
             android:id="@+id/actionToDetailInfoFragment"
@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/detailInfoFragment"
         android:name="com.bulyginkonstantin.cocktailbase.view.DetailInfoFragment"
-        android:label="fragment_detail_info"
+        android:label="@string/fragment_detail_info"
         tools:layout="@layout/fragment_detail_info">
         <action
             android:id="@+id/actionToFavouriteListFragment"
@@ -94,9 +94,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/favouriteListFragment"
+        android:id="@id/favouriteListFragment"
         android:name="com.bulyginkonstantin.cocktailbase.view.FavouriteListFragment"
-        android:label="fragment_favourite_list"
+        android:label="@string/fragment_favourite_list"
         tools:layout="@layout/fragment_favourite_list">
         <action
             android:id="@+id/action_favouriteListFragment_to_chooseSearchFragment"
@@ -111,7 +111,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 

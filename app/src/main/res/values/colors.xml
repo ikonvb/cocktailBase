@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#011F3F</color>
     <color name="colorAccent">#D81B60</color>
     <color name="main_background">#FEF2BF</color>
+    <color name="second_background">#9C8117</color>
+    <color name="third_background">#B1DBE8</color>
     <color name="text_color">#FEF2BF</color>
     <color name="black_for_text">#000002</color>
     <color name="blue_for_background">#010124</color>

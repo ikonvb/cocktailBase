@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/chooseSearchFragment"
+            android:icon="@drawable/ic_search_black"
+            android:title="@string/home"/>
+
+        <item android:id="@+id/resultAllListFragment"
+            android:icon="@drawable/ic_search_black"
+            android:title="@string/show_all"/>
+
+        <item android:id="@+id/favouriteListFragment"
+            android:icon="@drawable/ic_search_black"
+            android:title="@string/favourite"/>
+    </group>
+
+</menu>

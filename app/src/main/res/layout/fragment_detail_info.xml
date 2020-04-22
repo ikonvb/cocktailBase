@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="cocktailDetail"
             type="com.bulyginkonstantin.cocktailbase.model.Cocktail" />
@@ -24,8 +25,8 @@
                 android:layout_width="0dp"
                 android:layout_height="160dp"
                 android:adjustViewBounds="true"
-                android:imgUrl="@{cocktailDetail.imgUrl}"
                 android:contentDescription="@string/cocktail_photo"
+                android:imgUrl="@{cocktailDetail.imgUrl}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,10 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:text="@{cocktailDetail.drinkName}"
                 android:textColor="@color/black_for_text"
                 android:textSize="@dimen/text_size_24"
                 android:textStyle="bold"
-                android:text="@{cocktailDetail.drinkName}"
                 app:layout_constraintEnd_toEndOf="@+id/cocktailImageView"
                 app:layout_constraintStart_toStartOf="@+id/cocktailImageView"
                 app:layout_constraintTop_toBottomOf="@+id/cocktailImageView"
@@ -64,10 +65,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:text="@{cocktailDetail.glass}"
                 android:textColor="@color/black_for_text"
                 app:layout_constraintBaseline_toBaselineOf="@+id/glassTextViewLabel"
                 app:layout_constraintStart_toEndOf="@+id/glassTextViewLabel"
-                android:text="@{cocktailDetail.glass}"
                 tools:text="place holder" />
 
             <TextView
@@ -86,10 +87,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:text="@{cocktailDetail.isAlcoholic}"
                 android:textColor="@color/black_for_text"
                 app:layout_constraintBaseline_toBaselineOf="@+id/alcoholicTextViewLabel"
                 app:layout_constraintStart_toEndOf="@+id/alcoholicTextViewLabel"
-                android:text="@{cocktailDetail.isAlcoholic}"
                 tools:text="place holder" />
 
             <TextView
@@ -110,10 +111,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:text="@{cocktailDetail.category}"
                 android:textColor="@color/black_for_text"
                 app:layout_constraintBaseline_toBaselineOf="@+id/styleTextViewLabel"
                 app:layout_constraintStart_toEndOf="@+id/styleTextViewLabel"
-                android:text="@{cocktailDetail.category}"
                 tools:text="place holder" />
 
             <TextView
@@ -161,11 +162,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:text="@{cocktailDetail.instructions}"
                 android:textColor="@color/black_for_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/instructionsTextViewLabel"
-                android:text="@{cocktailDetail.instructions}"
                 tools:text="place holder" />
 
             <Button
