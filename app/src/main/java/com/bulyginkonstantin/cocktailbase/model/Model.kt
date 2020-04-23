@@ -83,65 +83,62 @@ data class InitCocktail(
 ) {
 
     fun getAllIngredients() {
-
+        val result = arrayListOf<String>()
+        var i = 1
         if (ingredient1 != null) {
-            initIngredients = "$ingredient1\n"
+            result.add(ingredient1)
         }
-
         if (ingredient2 != null) {
-            initIngredients += "$ingredient2\n"
+            result.add(ingredient2)
         }
-
         if (ingredient3 != null) {
-            initIngredients += "$ingredient3\n"
+            result.add(ingredient3)
         }
-
         if (ingredient4 != null) {
-            initIngredients += "$ingredient4\n"
+            result.add(ingredient4)
         }
-
         if (ingredient5 != null) {
-            initIngredients += "$ingredient5\n"
+            result.add(ingredient5)
         }
-
         if (ingredient6 != null) {
-            initIngredients += "$ingredient6\n"
+            result.add(ingredient6)
         }
-
         if (ingredient7 != null) {
-            initIngredients += "$ingredient7\n"
+            result.add(ingredient7)
         }
-
         if (ingredient8 != null) {
-            initIngredients += "$ingredient8\n"
+            result.add(ingredient8)
         }
-
         if (ingredient9 != null) {
-            initIngredients += "$ingredient9\n"
+            result.add(ingredient9)
         }
-
         if (ingredient10 != null) {
-            initIngredients += "$ingredient10\n"
+            result.add(ingredient10)
         }
-
         if (ingredient11 != null) {
-            initIngredients += "$ingredient11\n"
+            result.add(ingredient11)
         }
-
         if (ingredient12 != null) {
-            initIngredients += "$ingredient12\n"
+            result.add(ingredient12)
         }
-
         if (ingredient13 != null) {
-            initIngredients += "$ingredient13\n"
+            result.add(ingredient13)
         }
-
         if (ingredient14 != null) {
-            initIngredients += "$ingredient14\n"
+            result.add(ingredient14)
+        }
+        if (ingredient15 != null) {
+            result.add(ingredient15)
         }
 
-        if (ingredient15 != null) {
-            initIngredients += "$ingredient15\n"
+        for (ingredient in result) {
+            if (initIngredients == null) {
+                initIngredients = "$i $ingredient \n"
+                i++
+            } else {
+                initIngredients += "$i $ingredient \n"
+                i++
+            }
         }
     }
 }
