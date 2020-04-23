@@ -136,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:text="@{cocktailDetail.ingredients}"
                 android:textColor="@color/black_for_text"
                 app:layout_constraintEnd_toStartOf="@+id/ingredientsTextView"
                 app:layout_constraintStart_toStartOf="parent"

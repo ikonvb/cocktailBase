@@ -4,6 +4,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface CocktailApi {
+
     //endpoint to search by name
     @GET("api/json/v1/1/search.php?s=margarita")
     fun getCocktailsByName(): Single<Drinks>

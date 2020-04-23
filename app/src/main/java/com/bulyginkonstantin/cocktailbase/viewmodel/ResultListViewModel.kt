@@ -14,6 +14,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
+import org.json.JSONArray
+import org.json.JSONObject
+
 
 class ResultListViewModel(application: Application) : BaseViewModel(application) {
 
@@ -68,8 +71,9 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Drinks>() {
 
-                    override fun onSuccess(cocktailsFromRemote: Drinks) {
-                        val list = getCocktails(cocktailsFromRemote)
+                    override fun onSuccess(drinks: Drinks) {
+
+                        val list = getCocktails(drinks)
                         storeCocktailsLocally(list)
                         Toast.makeText(
                             getApplication(),
@@ -86,12 +90,14 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         )
     }
 
+
     //get Cocktail objects from array named "drinks" in api
     private fun getCocktails(cocktailsFromRemote: Drinks): List<Cocktail> {
         val cocktailArrayList = arrayListOf<Cocktail>()
         for (cocktail in cocktailsFromRemote.drinkObjectOfArrays) {
             cocktailArrayList.add(cocktail)
         }
+
         return cocktailArrayList
     }
 
@@ -117,4 +123,5 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         super.onCleared()
         disposable.clear()
     }
+
 }
