@@ -4,18 +4,13 @@ import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.bulyginkonstantin.cocktailbase.model.Cocktail
-import com.bulyginkonstantin.cocktailbase.model.CocktailApiService
-import com.bulyginkonstantin.cocktailbase.model.CocktailDatabase
-import com.bulyginkonstantin.cocktailbase.model.Drinks
+import com.bulyginkonstantin.cocktailbase.model.*
 import com.bulyginkonstantin.cocktailbase.util.SharedPreferencesHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
-import org.json.JSONArray
-import org.json.JSONObject
 
 
 class ResultListViewModel(application: Application) : BaseViewModel(application) {
@@ -93,12 +88,19 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
 
     //get Cocktail objects from array named "drinks" in api
     private fun getCocktails(cocktailsFromRemote: Drinks): List<Cocktail> {
-        val cocktailArrayList = arrayListOf<Cocktail>()
+
+        val initCocktail = arrayListOf<InitCocktail>()
         for (cocktail in cocktailsFromRemote.drinkObjectOfArrays) {
-            cocktailArrayList.add(cocktail)
+            initCocktail.add(cocktail)
         }
 
-        return cocktailArrayList
+        val cocktailList = arrayListOf<Cocktail>()
+        for (cocktail in initCocktail) {
+            cocktail.getAllIngredients()
+            cocktailList.add(Cocktail(cocktail.drink_id, cocktail.drinkName, cocktail.category, cocktail.isAlcoholic, cocktail.glass, cocktail.instructions, cocktail.imgUrl, cocktail.lastDateModified, cocktail.initIngredients))
+        }
+
+        return cocktailList
     }
 
     //add cocktails to data base

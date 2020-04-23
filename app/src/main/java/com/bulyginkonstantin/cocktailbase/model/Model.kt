@@ -6,12 +6,10 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class Drinks(@SerializedName("drinks") val drinkObjectOfArrays: List<Cocktail>)
-
+data class Drinks(@SerializedName("drinks") val drinkObjectOfArrays: List<InitCocktail>)
 
 
 data class InitCocktail(
-
     @SerializedName("idDrink")
     var drink_id: String,
 
@@ -79,45 +77,102 @@ data class InitCocktail(
     val ingredient14: String?,
 
     @SerializedName("strIngredient15")
-    val ingredient15: String?
-)
+    val ingredient15: String?,
+
+    var initIngredients: String = ""
+) {
+
+    fun getAllIngredients() {
+
+        if (ingredient1 != null) {
+            initIngredients = "$ingredient1\n"
+        }
+
+        if (ingredient2 != null) {
+            initIngredients += "$ingredient2\n"
+        }
+
+        if (ingredient3 != null) {
+            initIngredients += "$ingredient3\n"
+        }
+
+        if (ingredient4 != null) {
+            initIngredients += "$ingredient4\n"
+        }
+
+        if (ingredient5 != null) {
+            initIngredients += "$ingredient5\n"
+        }
+
+        if (ingredient6 != null) {
+            initIngredients += "$ingredient6\n"
+        }
+
+        if (ingredient7 != null) {
+            initIngredients += "$ingredient7\n"
+        }
+
+        if (ingredient8 != null) {
+            initIngredients += "$ingredient8\n"
+        }
+
+        if (ingredient9 != null) {
+            initIngredients += "$ingredient9\n"
+        }
+
+        if (ingredient10 != null) {
+            initIngredients += "$ingredient10\n"
+        }
+
+        if (ingredient11 != null) {
+            initIngredients += "$ingredient11\n"
+        }
+
+        if (ingredient12 != null) {
+            initIngredients += "$ingredient12\n"
+        }
+
+        if (ingredient13 != null) {
+            initIngredients += "$ingredient13\n"
+        }
+
+        if (ingredient14 != null) {
+            initIngredients += "$ingredient14\n"
+        }
+
+        if (ingredient15 != null) {
+            initIngredients += "$ingredient15\n"
+        }
+    }
+}
 
 @Entity
 data class Cocktail(
     @PrimaryKey
     @ColumnInfo(name = "drink_id")
-    @SerializedName("idDrink")
     var drink_id: String,
 
     @ColumnInfo(name = "drink_name")
-    @SerializedName("strDrink")
     val drinkName: String?,
 
     @ColumnInfo(name = "drink_category")
-    @SerializedName("strCategory")
     val category: String?,
 
     @ColumnInfo(name = "drink_alcoholic")
-    @SerializedName("strAlcoholic")
     val isAlcoholic: String?,
 
     @ColumnInfo(name = "drink_glass")
-    @SerializedName("strGlass")
     val glass: String?,
 
     @ColumnInfo(name = "drink_instructions")
-    @SerializedName("strInstructions")
     val instructions: String?,
 
     @ColumnInfo(name = "drink_url")
-    @SerializedName("strDrinkThumb")
     val imgUrl: String?,
 
     @ColumnInfo(name = "modified_date")
-    @SerializedName("dateModified")
     val lastDateModified: String?,
 
-    @SerializedName("strIngredient1")
     val ingredients: String?
 )
 
@@ -125,38 +180,29 @@ data class Cocktail(
 data class FavouriteCocktail(
     @PrimaryKey
     @ColumnInfo(name = "drink_id")
-    @SerializedName("idDrink")
     val drink_id: String,
 
     @ColumnInfo(name = "drink_name")
-    @SerializedName("strDrink")
     val drinkName: String?,
 
     @ColumnInfo(name = "drink_category")
-    @SerializedName("strCategory")
     val category: String?,
 
     @ColumnInfo(name = "drink_alcoholic")
-    @SerializedName("strAlcoholic")
     val isAlcoholic: String?,
 
     @ColumnInfo(name = "drink_glass")
-    @SerializedName("strGlass")
     val glass: String?,
 
     @ColumnInfo(name = "drink_instructions")
-    @SerializedName("strInstructions")
     val instructions: String?,
 
     @ColumnInfo(name = "drink_url")
-    @SerializedName("strDrinkThumb")
     val imgUrl: String?,
 
     @ColumnInfo(name = "modified_date")
-    @SerializedName("dateModified")
     val lastDateModified: String?,
 
-    @SerializedName("strIngredient1")
     val ingredient1: String?
 
 ) {
