@@ -15,12 +15,7 @@ class CocktailApiService {
         .build()
         .create(CocktailApi::class.java)
 
-
-    fun getCocktailsByLetter(): Single<Drinks> {
-        return api.getCocktailsByLetter()
-    }
-
-    fun getCocktailsByName(): Single<Drinks> {
-        return api.getCocktailsByName()
+    fun getCocktailsByName(name: String): Single<Drinks> {
+        return api.getCocktailsByName(name)
     }
 }

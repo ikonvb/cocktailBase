@@ -32,17 +32,17 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
     val loading: LiveData<Boolean>
         get() = _loading
 
-    fun refreshData() {
+    fun refreshData(name: String) {
         val updateTime = prefHelper.getUpdateTime()
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime) {
             fetchFromDatabase()
         } else {
-            fetchFromRemote()
+            fetchFromRemote(name)
         }
     }
 
-    fun refreshByPassCache() {
-        fetchFromRemote()
+    fun refreshByPassCache(name: String) {
+        fetchFromRemote(name)
     }
 
     private fun fetchFromDatabase() {
@@ -58,10 +58,10 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         }
     }
 
-    private fun fetchFromRemote() {
+    private fun fetchFromRemote(name: String) {
         _loading.value = true
         disposable.add(
-            cocktailService.getCocktailsByName()
+            cocktailService.getCocktailsByName(name)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Drinks>() {

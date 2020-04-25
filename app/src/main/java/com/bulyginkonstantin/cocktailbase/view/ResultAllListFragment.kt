@@ -19,11 +19,15 @@ import kotlinx.android.synthetic.main.fragment_result_list.*
 class ResultAllListFragment : Fragment() {
     private lateinit var viewModelResult: ResultListViewModel
     private val cocktailListAdapter = CocktailListAdapter()
+    private lateinit var name: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        arguments?.let {
+            name = ResultAllListFragmentArgs.fromBundle(it).cocktailName
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_result_list, container, false)
     }
@@ -31,7 +35,7 @@ class ResultAllListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModelResult = ViewModelProviders.of(this).get(ResultListViewModel::class.java)
-        viewModelResult.refreshData()
+        viewModelResult.refreshData(name)
 
         rvCocktailsList.apply {
             layoutManager = LinearLayoutManager(context)
@@ -42,7 +46,7 @@ class ResultAllListFragment : Fragment() {
             rvCocktailsList.visibility = View.GONE
             errorList.visibility = View.GONE
             loadingProgressBar.visibility = View.VISIBLE
-            viewModelResult.refreshByPassCache()
+            viewModelResult.refreshByPassCache(name)
             refreshLayout.isRefreshing = false
         }
 

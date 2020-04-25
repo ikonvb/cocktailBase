@@ -33,6 +33,7 @@ class ChooseSearchFragment : Fragment() {
 
         buttonShowAll.setOnClickListener {
             val action = ChooseSearchFragmentDirections.actionToResulAlltListFragment()
+            action.cocktailName = ""
             Navigation.findNavController(it).navigate(action)
         }
 

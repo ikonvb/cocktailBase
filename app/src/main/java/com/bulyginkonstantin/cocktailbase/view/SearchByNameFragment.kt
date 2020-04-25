@@ -27,6 +27,7 @@ class SearchByNameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         buttonSearchByName.setOnClickListener {
             val action = SearchByNameFragmentDirections.actionToResulAlltListFragment()
+            action.cocktailName = editTextCocktailName.text.toString()
             Navigation.findNavController(it).navigate(action)
         }
     }
