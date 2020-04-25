@@ -28,4 +28,5 @@
     <string name="fragment_detail_info">detail info</string>
     <string name="fragment_favourite_list">favourite list</string>
     <string name="home">Home</string>
+    <string name="measures">measures:</string>
 </resources>

@@ -9,4 +9,6 @@
     <color name="text_color">#FEF2BF</color>
     <color name="black_for_text">#000002</color>
     <color name="blue_for_background">#010124</color>
+    <color name="head_drawer_background">#011F3F</color>
+    <color name="menu_drawer_background">#429FFD</color>
 </resources>
