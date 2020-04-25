@@ -97,7 +97,8 @@ class ResultListViewModel(application: Application) : BaseViewModel(application)
         val cocktailList = arrayListOf<Cocktail>()
         for (cocktail in initCocktail) {
             cocktail.getAllIngredients()
-            cocktailList.add(Cocktail(cocktail.drink_id, cocktail.drinkName, cocktail.category, cocktail.isAlcoholic, cocktail.glass, cocktail.instructions, cocktail.imgUrl, cocktail.lastDateModified, cocktail.initIngredients))
+            cocktail.getAllMeasures()
+            cocktailList.add(Cocktail(cocktail.drink_id, cocktail.drinkName, cocktail.category, cocktail.isAlcoholic, cocktail.glass, cocktail.instructions, cocktail.imgUrl, cocktail.lastDateModified, cocktail.initIngredients, cocktail.allMeasure))
         }
 
         return cocktailList

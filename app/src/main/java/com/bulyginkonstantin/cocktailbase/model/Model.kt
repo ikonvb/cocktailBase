@@ -79,8 +79,130 @@ data class InitCocktail(
     @SerializedName("strIngredient15")
     val ingredient15: String?,
 
+    @SerializedName("strMeasure1")
+    val measure1: String?,
+
+    @SerializedName("strMeasure2")
+    val measure2: String?,
+
+    @SerializedName("strMeasure3")
+    val measure3: String?,
+
+    @SerializedName("strMeasure4")
+    val measure4: String?,
+
+    @SerializedName("strMeasure5")
+    val measure5: String?,
+
+    @SerializedName("strMeasure6")
+    val measure6: String?,
+
+    @SerializedName("strMeasure7")
+    val measure7: String?,
+
+    @SerializedName("strMeasure8")
+    val measure8: String?,
+
+    @SerializedName("strMeasure9")
+    val measure9: String?,
+
+    @SerializedName("strMeasure10")
+    val measure10: String?,
+
+    @SerializedName("strMeasure11")
+    val measure11: String?,
+
+    @SerializedName("strMeasure12")
+    val measure12: String?,
+
+    @SerializedName("strMeasure13")
+    val measure13: String?,
+
+    @SerializedName("strMeasure14")
+    val measure14: String?,
+
+    @SerializedName("strMeasure15")
+    val measure15: String?,
+
+    var allMeasure: String = "",
+
     var initIngredients: String = ""
 ) {
+
+    fun getAllMeasures() {
+
+        val result = arrayListOf<String>()
+        var i = 1
+        if (measure1 != null) {
+            result.add(measure1)
+        }
+
+        if (measure2 != null) {
+            result.add(measure2)
+        }
+
+        if (measure3 != null) {
+            result.add(measure3)
+        }
+
+        if (measure4 != null) {
+            result.add(measure4)
+        }
+
+        if (measure5 != null) {
+            result.add(measure5)
+        }
+
+        if (measure6 != null) {
+            result.add(measure6)
+        }
+
+        if (measure7 != null) {
+            result.add(measure7)
+        }
+
+        if (measure8 != null) {
+            result.add(measure8)
+        }
+
+        if (measure9 != null) {
+            result.add(measure9)
+        }
+
+        if (measure10 != null) {
+            result.add(measure10)
+        }
+
+        if (measure11 != null) {
+            result.add(measure11)
+        }
+
+        if (measure12 != null) {
+            result.add(measure12)
+        }
+
+        if (measure13 != null) {
+            result.add(measure13)
+        }
+
+        if (measure14 != null) {
+            result.add(measure14)
+        }
+
+        if (measure15 != null) {
+            result.add(measure15)
+        }
+
+        for (measure in result) {
+            if (allMeasure.isNullOrEmpty()) {
+                allMeasure = "$i $measure \n"
+                i++
+            } else {
+                allMeasure += "$i $measure \n"
+                i++
+            }
+        }
+    }
 
     fun getAllIngredients() {
         val result = arrayListOf<String>()
@@ -132,7 +254,7 @@ data class InitCocktail(
         }
 
         for (ingredient in result) {
-            if (initIngredients == null) {
+            if (initIngredients.isNullOrEmpty()) {
                 initIngredients = "$i $ingredient \n"
                 i++
             } else {
@@ -170,7 +292,9 @@ data class Cocktail(
     @ColumnInfo(name = "modified_date")
     val lastDateModified: String?,
 
-    val ingredients: String?
+    val allIngredients: String?,
+
+    val allMeasure: String?
 )
 
 @Entity(tableName = "favourite_cocktails")
@@ -200,7 +324,9 @@ data class FavouriteCocktail(
     @ColumnInfo(name = "modified_date")
     val lastDateModified: String?,
 
-    val ingredient1: String?
+    val allIngredients: String?,
+
+    val allMeasure: String?
 
 ) {
     @Ignore
@@ -213,6 +339,7 @@ data class FavouriteCocktail(
         cocktail.instructions,
         cocktail.imgUrl,
         cocktail.lastDateModified,
-        cocktail.ingredients
+        cocktail.allIngredients,
+        cocktail.allMeasure
     )
 }
