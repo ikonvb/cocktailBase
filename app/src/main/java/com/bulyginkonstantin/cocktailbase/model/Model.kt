@@ -195,10 +195,10 @@ data class InitCocktail(
 
         for (measure in result) {
             if (allMeasure.isNullOrEmpty()) {
-                allMeasure = "$i $measure \n"
+                allMeasure = "$i. $measure \n"
                 i++
             } else {
-                allMeasure += "$i $measure \n"
+                allMeasure += "$i. $measure \n"
                 i++
             }
         }
@@ -255,10 +255,10 @@ data class InitCocktail(
 
         for (ingredient in result) {
             if (initIngredients.isNullOrEmpty()) {
-                initIngredients = "$i $ingredient \n"
+                initIngredients = "$i. $ingredient \n"
                 i++
             } else {
-                initIngredients += "$i $ingredient \n"
+                initIngredients += "$i. $ingredient \n"
                 i++
             }
         }
