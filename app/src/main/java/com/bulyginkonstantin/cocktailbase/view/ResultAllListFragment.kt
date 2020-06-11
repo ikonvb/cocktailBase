@@ -37,13 +37,16 @@ class ResultAllListFragment : Fragment() {
         viewModelResult = ViewModelProviders.of(this).get(ResultListViewModel::class.java)
         viewModelResult.refreshData(name)
 
+
         rvCocktailsList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = cocktailListAdapter
+            startLayoutAnimation()
         }
 
         refreshLayout.setOnRefreshListener {
             rvCocktailsList.visibility = View.GONE
+            rvCocktailsList.startLayoutAnimation()
             errorList.visibility = View.GONE
             loadingProgressBar.visibility = View.VISIBLE
             viewModelResult.refreshByPassCache(name)

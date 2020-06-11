@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.navigation.Navigation
 
 import com.bulyginkonstantin.cocktailbase.R
@@ -14,6 +16,10 @@ import kotlinx.android.synthetic.main.fragment_choose_search.*
  * A simple [Fragment] subclass.
  */
 class ChooseSearchFragment : Fragment() {
+
+    private lateinit var imvAnim: Animation
+    private lateinit var btnAnim: Animation
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +31,15 @@ class ChooseSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        imvAnim = AnimationUtils.loadAnimation(context, R.anim.choose_fragment_to_go)
+        btnAnim = AnimationUtils.loadAnimation(context, R.anim.btn_to_go)
+        imageViewSearch.startAnimation(imvAnim)
+        textView.startAnimation(imvAnim)
+        buttonFindByName.startAnimation(btnAnim)
+        buttonShowAll.startAnimation(btnAnim)
+        buttonFavourite.startAnimation(btnAnim)
+
+
 
         buttonFindByName.setOnClickListener {
             val action = ChooseSearchFragmentDirections.actionToSearchByNameFragment()

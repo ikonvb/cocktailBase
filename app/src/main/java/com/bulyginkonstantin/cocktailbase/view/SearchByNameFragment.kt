@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.navigation.Navigation
 
 import com.bulyginkonstantin.cocktailbase.R
@@ -14,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_search_by_name.*
  * A simple [Fragment] subclass.
  */
 class SearchByNameFragment : Fragment() {
+    private lateinit var imvAnim: Animation
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +28,11 @@ class SearchByNameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        imvAnim = AnimationUtils.loadAnimation(context, R.anim.choose_fragment_to_go)
+        imageView.startAnimation(imvAnim)
+        editTextCocktailName.startAnimation(imvAnim)
+        buttonSearchByName.startAnimation(imvAnim)
+
         buttonSearchByName.setOnClickListener {
             val action = SearchByNameFragmentDirections.actionToResulAlltListFragment()
             action.cocktailName = editTextCocktailName.text.toString()

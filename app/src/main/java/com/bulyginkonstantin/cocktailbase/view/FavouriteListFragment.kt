@@ -35,6 +35,7 @@ class FavouriteListFragment : Fragment() {
         rvFavoriteCocktailsList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = favCocktailListAdapter
+            startLayoutAnimation()
         }
 
         observeViewModel()
@@ -75,6 +76,4 @@ class FavouriteListFragment : Fragment() {
             }
         })
     }
-
-
 }
