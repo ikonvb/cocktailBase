@@ -47,7 +47,7 @@ def retrofitVersion = '2.3.0'
 def glideVersion = '4.10.0'
 def rxJavaVersion = '2.1.1'
 def roomVersion = '2.2.5'
-def navVersion = '2.3.0-beta01'
+def navVersion = '2.3.0-rc01'
 def preferencesVersion = '1.1.1'
 
 dependencies {
