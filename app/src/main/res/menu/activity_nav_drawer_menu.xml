@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
 
-        <item android:id="@+id/chooseSearchFragment"
-            android:icon="@drawable/ic_home"
-            android:title="@string/home"/>
+    <item
+        android:id="@+id/chooseSearchFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
 
-        <item android:id="@+id/resultAllListFragment"
-            android:icon="@drawable/ic_eye"
-            android:title="@string/show_all"/>
+    <item
+        android:id="@+id/resultAllListFragment"
+        android:icon="@drawable/ic_show_24"
+        android:title="@string/show_all" />
 
-        <item android:id="@+id/favouriteListFragment"
-            android:icon="@drawable/ic_favourite"
-            android:title="@string/favourite"/>
-    </group>
+    <item
+        android:id="@+id/favouriteListFragment"
+        android:icon="@drawable/ic_favourite"
+        android:title="@string/favourite" />
+
 
 </menu>

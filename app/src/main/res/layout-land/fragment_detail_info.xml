@@ -3,167 +3,313 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="cocktailDetail"
+            type="com.bulyginkonstantin.cocktailbase.model.Cocktail" />
+    </data>
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_background"
         tools:context=".view.DetailInfoFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="16dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/cocktailImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="160dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/cocktail_photo"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/three_bottles_photo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/cocktailNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:textColor="@color/black_for_text"
-                android:textSize="@dimen/text_size_24"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cocktailImageView"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Cocktail Name" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/glassTextViewLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/glass"
-                android:textColor="@color/black_for_text"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/styleTextViewLabel"
-                app:layout_constraintTop_toBottomOf="@+id/styleTextViewLabel" />
+                    <ImageView
+                        android:id="@+id/cocktailImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/cocktail_photo"
+                        android:imgUrl="@{cocktailDetail.imgUrl}"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/three_bottles_photo" />
 
-            <TextView
-                android:id="@+id/glassTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/black_for_text"
-                app:layout_constraintBaseline_toBaselineOf="@+id/glassTextViewLabel"
-                app:layout_constraintStart_toEndOf="@+id/glassTextViewLabel"
-                tools:text="place holder" />
+                    <TextView
+                        android:id="@+id/cocktailNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@{cocktailDetail.drinkName}"
+                        android:textColor="@color/black_for_text"
+                        android:textSize="@dimen/text_size_24"
+                        android:textStyle="bold"
+                        tools:text="Cocktail Name" />
 
-            <TextView
-                android:id="@+id/styleTextViewLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/style"
-                android:textColor="@color/black_for_text"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/alcoholicTextViewLabel"
-                app:layout_constraintTop_toBottomOf="@+id/alcoholicTextViewLabel" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/styleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/black_for_text"
-                app:layout_constraintBaseline_toBaselineOf="@+id/styleTextViewLabel"
-                app:layout_constraintStart_toEndOf="@+id/styleTextViewLabel"
-                tools:text="place holder" />
 
-            <TextView
-                android:id="@+id/alcoholicTextViewLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/alcoholic"
-                android:textColor="@color/black_for_text"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/cocktailImageView"
-                app:layout_constraintTop_toBottomOf="@+id/cocktailNameTextView" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/alcoholicTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/black_for_text"
-                app:layout_constraintBaseline_toBaselineOf="@+id/alcoholicTextViewLabel"
-                app:layout_constraintStart_toEndOf="@+id/alcoholicTextViewLabel"
-                tools:text="place holder" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/ingredientsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/ingredients"
-                android:textColor="@color/black_for_text"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/cocktailNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/cocktailNameTextView" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/allIngredientsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/black_for_text"
-                app:layout_constraintBaseline_toBaselineOf="@+id/ingredientsTextView"
-                app:layout_constraintStart_toEndOf="@+id/ingredientsTextView"
-                tools:text="place holder" />
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/instructionsTextViewLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/instructions"
-                android:textColor="@color/black_for_text"
-                android:textSize="@dimen/text_size_18"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/instructionsTextView"
-                app:layout_constraintTop_toBottomOf="@+id/glassTextViewLabel" />
+                                <TextView
+                                    android:id="@+id/glassTextViewLabel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/detail_start_margin"
+                                    android:layout_marginTop="8dp"
+                                    android:text="@string/glass"
+                                    android:textColor="@color/black_for_text"
+                                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/instructionsTextView"
-                android:layout_width="699dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/black_for_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructionsTextViewLabel"
-                tools:text="place holder" />
+                                <TextView
+                                    android:id="@+id/glassTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:text="@{cocktailDetail.glass}"
+                                    android:textColor="@color/black_for_text"
+                                    tools:text="place holder" />
 
-            <Button
-                android:id="@+id/buttonChangeFavourites"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/oval_button"
-                android:text="@string/add_to_favourites"
-                android:textColor="@color/text_color"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructionsTextView" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/alcoholicTextViewLabel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/detail_start_margin"
+                                    android:layout_marginTop="8dp"
+                                    android:text="@string/alcoholic"
+                                    android:textColor="@color/black_for_text"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/alcoholicTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:text="@{cocktailDetail.isAlcoholic}"
+                                    android:textColor="@color/black_for_text"
+                                    tools:text="place holder" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/styleTextViewLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/detail_start_margin"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/style"
+                            android:textColor="@color/black_for_text"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/styleTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@{cocktailDetail.category}"
+                            android:textColor="@color/black_for_text"
+                            tools:text="place holder" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/ingredientsTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/detail_start_margin"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/ingredients"
+                            android:textColor="@color/black_for_text"
+                            android:textSize="@dimen/text_size_18"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/allIngredientsTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/detail_start_margin"
+                            android:layout_marginTop="8dp"
+                            android:text="@{cocktailDetail.allIngredients}"
+                            android:textColor="@color/black_for_text"
+                            app:layout_constraintEnd_toStartOf="@+id/ingredientsTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
+                            tools:text="place holder" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/measurementsTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/detail_start_margin"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/measures"
+                            android:textColor="@color/black_for_text"
+                            android:textSize="@dimen/text_size_18"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/allMeasurementsTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/detail_start_margin"
+                            android:layout_marginTop="8dp"
+                            android:text="@{cocktailDetail.allMeasure}"
+                            android:textColor="@color/black_for_text"
+                            app:layout_constraintEnd_toStartOf="@+id/ingredientsTextView"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
+                            tools:text="place holder" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:textAlignment="center">
+
+                    <TextView
+                        android:id="@+id/instructionsTextViewLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/detail_start_margin"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/instructions"
+                        android:textColor="@color/black_for_text"
+                        android:textSize="@dimen/text_size_18"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/instructionsTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/detail_start_margin"
+                        android:layout_marginTop="8dp"
+                        android:text="@{cocktailDetail.instructions}"
+                        android:textColor="@color/black_for_text"
+                        tools:text="place holder" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/detail_start_margin"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/last_date_modified"
+                        android:textColor="@color/black_for_text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/detail_start_margin"
+                        android:text="@{cocktailDetail.lastDateModified}"
+                        tools:text="2015-08-18 14:51:53" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonChangeFavourites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/oval_button"
+                        android:textColor="@color/text_color" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </FrameLayout>
+
 
 </layout>

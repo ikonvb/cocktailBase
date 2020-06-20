@@ -11,7 +11,6 @@ import com.bulyginkonstantin.cocktailbase.databinding.DetailFavouriteCocktailInf
 import com.bulyginkonstantin.cocktailbase.model.FavouriteCocktail
 import com.bulyginkonstantin.cocktailbase.view.CocktailClickListener
 import com.bulyginkonstantin.cocktailbase.view.FavouriteListFragmentDirections
-import com.bulyginkonstantin.cocktailbase.view.ResultAllListFragmentDirections
 import kotlinx.android.synthetic.main.detail_cocktail_info.view.*
 
 class FavouriteCocktailListAdapter :

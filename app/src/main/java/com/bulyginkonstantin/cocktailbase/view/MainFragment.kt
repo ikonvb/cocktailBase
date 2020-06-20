@@ -30,7 +30,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnAnim = AnimationUtils.loadAnimation(context, R.anim.btn_to_go)
         splashScreenAnim = AnimationUtils.loadAnimation(context, R.anim.alpha_to_go)
-        splashScreen.startAnimation(splashScreenAnim)
+        mainFragment.startAnimation(splashScreenAnim)
         buttonAdvance.startAnimation(btnAnim)
 
         buttonAdvance.setOnClickListener {

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <FrameLayout
+        android:id="@+id/chooseSearchFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_background"
@@ -29,12 +32,12 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/cocktail_welcome"
                 android:textColor="#011F3F"
                 android:textSize="36sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/buttonFindByName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +47,7 @@
                 android:id="@+id/buttonFindByName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="28dp"
                 android:background="@drawable/oval_button"
                 android:elevation="3dp"
                 android:fontFamily="@font/roboto"
@@ -53,22 +56,8 @@
                 android:textSize="@dimen/text_size_24"
                 app:layout_constraintBottom_toTopOf="@+id/buttonShowAll"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/buttonShowAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:background="@drawable/oval_button"
-                android:elevation="3dp"
-                android:fontFamily="@font/roboto"
-                android:text="@string/show_all"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/text_size_24"
-                app:layout_constraintBottom_toTopOf="@+id/buttonFavourite"
-                app:layout_constraintEnd_toEndOf="@+id/buttonFindByName"
-                app:layout_constraintStart_toStartOf="@+id/buttonFindByName" />
 
             <Button
                 android:id="@+id/buttonFavourite"
@@ -83,10 +72,27 @@
                 android:textSize="@dimen/text_size_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/buttonShowAll"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/buttonShowAll" />
+
+            <Button
+                android:id="@+id/buttonShowAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:background="@drawable/oval_button"
+                android:elevation="3dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/show_all"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size_24"
+                app:layout_constraintBottom_toTopOf="@+id/buttonFavourite"
+                app:layout_constraintEnd_toEndOf="@+id/buttonFindByName"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/buttonFindByName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
 
-</layout>
+</RelativeLayout>
